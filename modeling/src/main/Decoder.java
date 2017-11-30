@@ -3,6 +3,7 @@ package main;
 public class Decoder {
     public int all;
     public int fault;
+    public int success;
 
     public Decoder() {
         this.all = 0;
@@ -14,6 +15,7 @@ public class Decoder {
             this.fault += 1;
         }
         this.all += 1;
+        this.success = this.all - this.fault;
     }
 
     public int getGetDeletedRatio() {

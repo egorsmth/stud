@@ -12,6 +12,7 @@ public class Gui extends JDialog {
     private JButton buttonCancel;
 
     private JLabel total_package_count;
+    private JLabel success_package_count;
     private JLabel destroyed_package_count;
     private JLabel resource_time_count;
 
@@ -55,6 +56,7 @@ public class Gui extends JDialog {
         m.start();
         this.total_package_count.setText(Integer.toString(m.all));
         this.destroyed_package_count.setText(Integer.toString(m.fault));
+        this.success_package_count.setText(Integer.toString(m.success));
         this.resource_time_count.setText(Integer.toString(m.resource));
     }
 

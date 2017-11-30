@@ -7,6 +7,7 @@ public class Main {
     public int all = 0;
     public int fault = 0;
     public int resource = 0;
+    public int success = 0;
 
     public void start() {
         long time = 0;
@@ -44,6 +45,7 @@ public class Main {
 
         this.all = decoder.all;
         this.fault = decoder.fault;
+        this.success = decoder.success;
         this.resource = resource.getCalled();
     }
 
