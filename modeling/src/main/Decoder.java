@@ -8,6 +8,7 @@ public class Decoder {
     public Decoder() {
         this.all = 0;
         this.fault = 0;
+        this.success = 0;
     }
 
     public void addPackage(Package pack) {

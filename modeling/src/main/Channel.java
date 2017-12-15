@@ -7,11 +7,13 @@ import java.util.Queue;
 public class Channel {
 
     private Queue<Package> packages;
+    private int res_help;
     private int speed;
     private int counter;
     private boolean resourceAdded;
 
-    public Channel() {
+    public Channel(int res_help) {
+        this.res_help = res_help;
         this.speed = 5;
         this.counter = this.speed;
         this.packages = new LinkedList<Package>();
@@ -26,7 +28,7 @@ public class Channel {
 
     public Package getPackage() {
 
-        if (this.counter == 0) {
+        if (this.counter < 1) {
             this.counter = this.speed;
             this.counter -= 1;
             return this.packages.poll();
@@ -42,15 +44,14 @@ public class Channel {
         }
     }
 
-    public void addResource(Resource resource) {
+    public void addResource() {
         if (this.resourceAdded) {
             return;
         }
-        resource.call();
         this.resourceAdded = true;
-        this.speed = 4;
+        this.speed = this.speed - this.res_help;
         if (this.counter > 0) {
-            this.counter -= 1;
+            this.counter -= this.res_help;
         }
     }
 

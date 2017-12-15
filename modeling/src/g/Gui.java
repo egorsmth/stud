@@ -16,6 +16,13 @@ public class Gui extends JDialog {
     private JLabel destroyed_package_count;
     private JLabel resource_time_count;
 
+    private JLabel resource_freq;
+    private JLabel destroy_freq;
+
+    private JTextField generate_time;
+    private JTextField resource_help;
+    private JTextField procent;
+
 
     public Gui() {
         setContentPane(contentPane);
@@ -52,12 +59,30 @@ public class Gui extends JDialog {
     }
 
     private void onOK() {
+        int gen = 6;
+        try {
+            gen = Integer.parseInt(this.generate_time.getText());
+        } catch (Exception e) { }
+
+        int res_h = 1;
+        try {
+            res_h = Integer.parseInt(this.resource_help.getText());
+        } catch (Exception e) { }
+
+        int procent = 30;
+        try {
+            procent = Integer.parseInt(this.procent.getText());
+        } catch (Exception e) { }
+
         Main m = new Main();
-        m.start();
+        m.start(100, gen, res_h, procent);
         this.total_package_count.setText(Integer.toString(m.all));
         this.destroyed_package_count.setText(Integer.toString(m.fault));
         this.success_package_count.setText(Integer.toString(m.success));
         this.resource_time_count.setText(Integer.toString(m.resource));
+
+        this.resource_freq.setText(String.format("%.3f", (float)m.resource/(10 * 1000)));
+        this.destroy_freq.setText(String.format("%.3f", (float)m.fault/m.all));
     }
 
     private void onCancel() {
